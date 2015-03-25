@@ -50,26 +50,18 @@ public class SampleChooserActivity extends Activity {
     ListView sampleList = (ListView) findViewById(R.id.sample_list);
     final SampleAdapter sampleAdapter = new SampleAdapter(this);
 
-    sampleAdapter.add(new Header("YouTube DASH"));
+    sampleAdapter.add(new Header("Square grating"));
     sampleAdapter.addAll((Object[]) Samples.YOUTUBE_DASH_MP4);
-    sampleAdapter.add(new Header("Widevine GTS DASH"));
+    sampleAdapter.add(new Header("Gradient grating"));
     sampleAdapter.addAll((Object[]) Samples.WIDEVINE_GTS);
-    sampleAdapter.add(new Header("SmoothStreaming"));
+    sampleAdapter.add(new Header("Looming"));
     sampleAdapter.addAll((Object[]) Samples.SMOOTHSTREAMING);
-    sampleAdapter.add(new Header("HLS"));
+    sampleAdapter.add(new Header("Flicker"));
     sampleAdapter.addAll((Object[]) Samples.HLS);
-    sampleAdapter.add(new Header("Misc"));
+    sampleAdapter.add(new Header("Small Object"));
     sampleAdapter.addAll((Object[]) Samples.MISC);
 
     // Add WebM samples if the device has a VP9 decoder.
-    try {
-      if (MediaCodecUtil.getDecoderInfo(MimeTypes.VIDEO_VP9, false) != null) {
-        sampleAdapter.add(new Header("YouTube WebM DASH (Experimental)"));
-        sampleAdapter.addAll((Object[]) Samples.YOUTUBE_DASH_WEBM);
-      }
-    } catch (DecoderQueryException e) {
-      Log.e(TAG, "Failed to query vp9 decoder", e);
-    }
 
     sampleList.setAdapter(sampleAdapter);
     sampleList.setOnItemClickListener(new OnItemClickListener() {
